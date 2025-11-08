@@ -1,0 +1,141 @@
+Nama: I Made Gede Riyandhi Wiguna Putra
+Username Dicoding: i_made_gede_riyandhi_wiguna_putra_sLwW
+
+===================================
+SUBMISSION AKHIR - BELAJAR PENGEMBANGAN WEB INTERMEDIATE
+===================================
+
+URL Deployment (Netlify):
+https://katalog-cerita-dicoding.netlify.app
+
+URL Repository GitHub:
+https://github.com/[username]/katalog-cerita-dicoding
+
+===================================
+FITUR YANG DIIMPLEMENTASIKAN
+===================================
+
+✅ KRITERIA 1: Mempertahankan Submission Sebelumnya (4 pts)
+   - SPA dengan MVP architecture
+   - Custom view transition
+   - Peta dengan marker & popup
+   - Multiple tile layers (OSM & Topo)
+   - Fitur tambah cerita dengan validasi lengkap
+   - Upload foto & kamera langsung
+   - Aksesibilitas penuh (keyboard, responsive, skip to content)
+
+✅ KRITERIA 2: Push Notification (ADVANCED - 4 pts)
+   - Push notification dari service worker
+   - Notifikasi dinamis (judul, icon, pesan)
+   - Toggle enable/disable subscription
+   - Action navigasi ke detail page
+   - VAPID Public Key: BCCs2eonMI-6H2ctvFaWg-UYdDv387Vno_bzUzALpB442r2lCnsHmtrx8biyPi_E-1fSGABK_Qs_GlvPoJJqxbk
+
+✅ KRITERIA 3: PWA Implementation (ADVANCED - 4 pts)
+   - Installable PWA (desktop & mobile)
+   - Offline support dengan app shell
+   - Web App Manifest lengkap (screenshots, shortcuts, theme)
+   - Cache data dinamis (Network First strategy)
+   - Background sync untuk offline data
+
+✅ KRITERIA 4: IndexedDB (ADVANCED - 4 pts)
+   - Fitur "Favorit Saya" (create, read, delete)
+   - Search & filter cerita favorit
+   - Sorting (newest, oldest, name A-Z, name Z-A)
+   - Background sync offline → online
+   - Persistent storage di perangkat
+
+✅ KRITERIA 5: Deploy Publik (4 pts)
+   - Deployed ke Netlify
+   - Service worker berfungsi di production
+   - PWA installable di production
+   - HTTPS enabled
+
+===================================
+TEKNOLOGI YANG DIGUNAKAN
+===================================
+
+- Vanilla JavaScript (ES6 Modules)
+- Service Worker API
+- Push Notification API
+- IndexedDB API
+- Background Sync API
+- Cache API
+- Web App Manifest
+- Leaflet.js (Peta)
+- Vite (Build tool)
+- Netlify (Hosting)
+
+===================================
+CARA TESTING
+===================================
+
+1. Testing PWA Install:
+   - Buka aplikasi di browser (Chrome/Edge)
+   - Klik icon install di address bar
+   - Atau klik "Install Aplikasi" di menu navigasi
+
+2. Testing Push Notification:
+   - Login ke aplikasi
+   - Toggle "Push Notifikasi" di menu navigasi
+   - Tambah cerita baru untuk trigger notifikasi
+
+3. Testing Offline Mode:
+   - Buka aplikasi
+   - Matikan koneksi internet (Offline mode)
+   - Aplikasi tetap dapat diakses
+   - Data yang sudah di-cache tetap muncul
+
+4. Testing IndexedDB (Favorit):
+   - Klik icon ❤️ di story card untuk tambah favorit
+   - Buka halaman "Favorit Saya"
+   - Gunakan search & filter
+   - Hapus favorit dengan klik ❌
+
+5. Testing Background Sync:
+   - Matikan koneksi internet
+   - Tambah cerita baru (akan disimpan di pending sync)
+   - Nyalakan koneksi internet
+   - Data otomatis ter-sync ke server
+
+===================================
+API KEYS & CREDENTIALS
+===================================
+
+API Base URL: https://story-api.dicoding.dev/v1
+VAPID Public Key: BCCs2eonMI-6H2ctvFaWg-UYdDv387Vno_bzUzALpB442r2lCnsHmtrx8biyPi_E-1fSGABK_Qs_GlvPoJJqxbk
+Map Service: OpenStreetMap (No API Key Required)
+
+Test Account:
+Email: test@dicoding.com
+Password: test12345
+
+===================================
+CATATAN TAMBAHAN
+===================================
+
+- Service worker di-register di /service-worker.js (root)
+- Manifest di /manifest.json
+- Icons & screenshots di /public/images/
+- Semua fitur telah ditest di Chrome, Edge, dan Firefox
+- PWA dapat diinstall di Android & iOS
+- Push notification bekerja di browser yang support (Chrome, Edge)
+
+===================================
+BUILD & DEPLOYMENT
+===================================
+
+Development:
+npm install
+npm run dev
+
+Production Build:
+npm run build
+
+Deploy ke Netlify:
+1. Connect GitHub repository
+2. Build command: npm run build
+3. Publish directory: dist
+4. Environment variables: (tidak ada)
+
+===================================
