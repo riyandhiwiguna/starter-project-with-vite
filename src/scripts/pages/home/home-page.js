@@ -1,5 +1,6 @@
 import HomePresenter from './home-presenter.js';
 import IDBHelper from '../../utils/idb-helper.js';
+import NotificationToggle from '../components/notification-toggle.js';
 
 export default class HomePage {
   constructor() {
@@ -17,12 +18,20 @@ export default class HomePage {
 
         <div id="map" class="map" style="height:400px;" role="application" aria-label="Peta lokasi story"></div>
 
-        <div id="controls" style="margin-top: 16px;">
+        <!-- Tombol sejajar -->
+        <div id="controls" 
+          style="
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+          ">
+          
           <button id="loadMoreBtn" aria-label="Muat lebih banyak story">Muat lebih banyak</button>
+          <div id="notification-toggle-container"></div>
         </div>
-
-        <!-- NOTIFICATION AREA: tempat stabil untuk menaruh tombol Push Notification -->
-        <div id="notification-area" aria-hidden="false" style="width:100%; display:flex; justify-content:center; margin-top:12px;"></div>
 
         <h2>Semua Cerita</h2>
         <div id="story-list" class="story-list" tabindex="0" aria-live="polite" role="list"></div>
@@ -51,7 +60,7 @@ export default class HomePage {
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
-      shadowSize: [41, 41]
+      shadowSize: [41, 41],
     });
 
     this.highlightIcon = L.icon({
@@ -60,10 +69,16 @@ export default class HomePage {
       iconSize: [35, 57],
       iconAnchor: [17, 57],
       popupAnchor: [1, -44],
-      shadowSize: [41, 41]
+      shadowSize: [41, 41],
     });
 
+    // Inisialisasi presenter
     await this.presenter.init();
+
+    // Inisialisasi tombol notifikasi
+    if (window.swRegistration) {
+      await NotificationToggle.init(window.swRegistration);
+    }
   }
 
   showError(message) {
@@ -140,7 +155,6 @@ export default class HomePage {
   }
 
   renderMarkers(stories) {
-
     Object.values(this.markerMap).forEach(marker => {
       this.map.removeLayer(marker);
     });
@@ -162,7 +176,6 @@ export default class HomePage {
       const storyId = card.dataset.id;
 
       card.addEventListener('click', (e) => {
-
         if (e.target.classList.contains('favorite-toggle-btn')) return;
         handler(storyId);
       });
